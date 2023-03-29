@@ -1,11 +1,12 @@
 import pandas as pd
 from sklearn.naive_bayes import GaussianNB
-from os.path import isfile
+from os.path import isfile, dirname, join
 import pickle
 
 
 def loan_prediction_model():
-    cibil_data = pd.read_csv("cibil_score_dataset.csv")
+    c_file = join(dirname(__file__), "cibil_score_dataset.csv")
+    cibil_data = pd.read_csv(c_file)
     X = cibil_data.iloc[:, :-1].values
     y = cibil_data.iloc[:, -1].values
     gnb = GaussianNB()
